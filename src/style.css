@@ -1,0 +1,104 @@
+:root {
+  --header-bg-color: oklch(69.57% 0.161 259);
+  --app-bg-color: oklch(90.17% 0.04778831963607447 259);
+  --post-bg-color: oklch(95.82% 0.019966127512297264 259);
+  --text-color: black;
+  --header-height: 54px;
+}
+
+html[data-theme='dark'] {
+  --header-bg-color: oklch(54.19% 0.207 259);
+  --app-bg-color: oklch(32.81% 0.11 259);
+  --post-bg-color: oklch(48.62% 0.19755250633630844 259);
+  --text-color: white;
+  accent-color: darkred;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--app-bg-color);
+}
+
+.modalWindow {
+  border: none;
+  width: 100vw;
+  max-width: none;
+  height: 100svh;
+  max-height: none;
+  background-color: var(--post-bg-color);
+  color: var(--text-color);
+
+  & .modalForm {
+    background-color: inherit;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px;
+
+    & .buttonPanel {
+      flex-direction: row;
+      height: 44px;
+    }
+
+    & input, textarea {
+      border: 1px solid var(--text-color);
+      background-color: inherit;
+      color: inherit;
+      margin: 4px 0;
+    }
+
+    & textarea {
+      resize: none;
+      width: 100%;
+      height: 80svh;
+    }
+  }
+}
+
+.modalWindow::backdrop {
+  background-color: oklch(0% 0 0 / 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.buttonPanel {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  height: fit-content;
+  width: fit-content;
+  margin-inline-start: auto;
+  overflow: hidden;
+
+  & > button {
+    border-radius: 0;
+  }
+}
+
+#confirmDelete {
+  max-width: 50%;
+}
+
+@media (width >= 768px) {
+  .modalWindow {
+    margin: auto;
+    width: 800px;
+    height: fit-content;
+    max-height: none;
+
+    & .modalForm {
+
+      & textarea {
+        height: 34svh;
+      }
+    }
+  }
+  .buttonPanel {
+    flex-direction: row;
+    height: 44px;
+  }
+}
